@@ -1,0 +1,3 @@
+source .venv/bin/activate
+cd OpenCV
+python3 1.py
