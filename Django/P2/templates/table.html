@@ -1,0 +1,53 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-9 grid-margin "></div>
+            <div class="col-lg-3 grid-margin ">
+                <a type="button" class="btn bg-gradient-warning btn-sm btn-icon-text" href="{% url 'form' %}">
+                    Add Category
+                </a>
+            </div>
+        </div>
+   <div class="row">
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Basic Table</h4>
+                    <p class="card-description"> Add class <code>.table</code>
+                    </p>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Category Name</th>
+                          <th>Description</th>
+                          <th>Image</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                         {% for cat in products%}
+                        <tr>
+                          <td>{{cat.categoryname}}</td>
+                          <td>{{cat.description}}</td>
+                          <td><img src="{{cat.image.url}}"></td>
+                           <td><a href="{% url 'viewcategory' catid=cat.id%}">View</a></td>
+                            <td><a href="{% url 'updatecategory' catid=cat.id%}">Upadte</a></td>
+                             <td><a href="{% url 'deletecategory' catid=cat.id%}">Delete</a></td>
+                          <!-- <td><label class="badge badge-danger">Pending</label></td> -->
+                        </tr>
+                         {%endfor%}
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+               </div>
+                  </div>
+                  {% endblock content %}
